@@ -1,4 +1,6 @@
-# Vocabulary list (on paper) in Japanese -> French to Anki & others, using VLMs
+# Vocabulary list (on paper) in Japanese -> French to Anki & others, using Mistral VLM
+
+(English below)
 
 ## Instructions pour Pab
 
@@ -44,3 +46,14 @@ python main.py --in_dir ./photos --type flashdeck --out deck.json --autocorrect 
 
 - J'avais mis une option pour changer de langue mais j'ai pas fini et ca sert objectivement à rien
 - Pour que ca aille plus vite, compresse tes images (`jpegoptim --size 800k *.jpg` sur linux)
+
+
+## English version
+
+Options: 
+- `--autocorrect`: Auto-corrects words if your Japanese -> French vocabulary list is poorly translated (which is the case for mine). Japanese takes priority.
+- `--in_dir`: The directory containing your input images.
+- `--out`: The output file path.
+- `--type`: "flashdeck" (custom JSON) or "anki" (a .txt file for import, using ; as a separator). If you choose Anki, don't forget to use a .txt extension for the --out file.
+
+Just translate the instructions if you need more
