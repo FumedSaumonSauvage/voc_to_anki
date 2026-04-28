@@ -11,6 +11,6 @@ class ModelLoader:
         if cls._instance is None:
             cls._instance = super(ModelLoader, cls).__new__(cls)
             api_key = os.getenv("MISTRAL_API_KEY")
-            cls._instance.model_name = os.getenv("MISTRAL_MODEL", "pixtral-12b-2409")
+            cls._instance.model_name = os.getenv("MISTRAL_MODEL", "mistral-large-latest")
             cls._instance.client = Mistral(api_key=api_key)
         return cls._instance

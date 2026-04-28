@@ -7,11 +7,8 @@ from pipeline import VocPipeline
 def main():
     parser = argparse.ArgumentParser(description="OCR Japonais vers Decks Flashcards")
     parser.add_argument("--in_dir", required=True, help="Dossier contenant les images")
-    parser.add_argument("--type", choices=["flashdeck", "anki"], required=True)
-    parser.add_argument("--out", required=True, help="Chemin de sortie")
-    parser.add_argument("--language", default="JP")
+    parser.add_argument("--out", default="deck.apkg", help="Chemin de sortie")
     parser.add_argument("--autocorrect", action="store_true", default=False)
-    parser.add_argument("--name", default="Mots Japonais")
 
     args = parser.parse_args()
 
@@ -32,22 +29,15 @@ def main():
         print(f"Analyse de {img}...")
         path = os.path.join(args.in_dir, img)
         try:
-            res = pipeline.extract_vocab(path, args.language, args.autocorrect)
+            res = pipeline.extract_vocab(path, "JP", args.autocorrect)
             all_vocab.extend(res)
         except Exception as e:
             print(f"Erreur lors de l'analyse de {img}: {e}")
 
-    # Conversion finale
-    if args.type == "flashdeck":
-        final_output = pipeline.model_to_flash_deck(all_vocab, args.name)
-        with open(args.out, "w", encoding="utf-8") as f:
-            json.dump(final_output, f, ensure_ascii=False, indent=2)
-    else:
-        final_output = pipeline.model_to_anki(all_vocab, args.name)
-        with open(args.out, "w", encoding="utf-8") as f:
-            f.write(final_output)
 
-    print(f"\nSuccès ! {len(all_vocab)} mots extraits.")
+    pipeline.save_to_apkg(all_vocab, args.out)
+
+    print(f"\nFinito, {len(all_vocab)} mots extraits.")
     print(f"Fichier sauvegardé sous : {args.out}")
 
 if __name__ == "__main__":

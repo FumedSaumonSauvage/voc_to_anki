@@ -1,4 +1,4 @@
-# Vocabulary list (on paper) in Japanese -> French to Anki & others, using Mistral VLM
+# Vocabulary list (on paper) in Japanese -> French to Anki apkg, using Mistral VLM
 
 (English below)
 
@@ -33,11 +33,10 @@ Options:
 - `--autocorrect`: autocorrige les mots si ta liste de vocabulaire jap -> francais est mal traduite (c'est le cas de la mienne). Le jap a alors la priorité.
 - `--in_dir`: le dossier avec tes images en input
 - `--out`: le fichier output
-- `--type`: "flashdeck" (json custom) ou "anki" (un txt à importer, séparateur `;`). Si tu choisis Anki, oublie pas de mettre un fichier .txt en `--out`
 
 Dans ton terminal avec le venv activé:
 ```
-python main.py --in_dir ./photos --type flashdeck --out deck.json --autocorrect --name "Turbo vocab"
+python main.py --in_dir ./test_images --out deck.apkg --autocorrect
 ```
 (choisis tes options)
 
@@ -46,6 +45,7 @@ python main.py --in_dir ./photos --type flashdeck --out deck.json --autocorrect 
 
 - J'avais mis une option pour changer de langue mais j'ai pas fini et ca sert objectivement à rien
 - Pour que ca aille plus vite, compresse tes images (`jpegoptim --size 800k *.jpg` sur linux)
+- L'ID de deck est généré aléatoirement donc on peut pas maj les decks
 
 
 ## English version
@@ -53,7 +53,6 @@ python main.py --in_dir ./photos --type flashdeck --out deck.json --autocorrect 
 Options: 
 - `--autocorrect`: Auto-corrects words if your Japanese -> French vocabulary list is poorly translated (which is the case for mine). Japanese takes priority.
 - `--in_dir`: The directory containing your input images.
-- `--out`: The output file path.
-- `--type`: "flashdeck" (custom JSON) or "anki" (a .txt file for import, using ; as a separator). If you choose Anki, don't forget to use a .txt extension for the --out file.
+- `--out`: The output apkg file path.
 
 Just translate the instructions if you need more
