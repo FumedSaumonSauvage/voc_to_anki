@@ -29,7 +29,8 @@ def main():
         print(f"Analyse de {img}...")
         path = os.path.join(args.in_dir, img)
         try:
-            res = pipeline.extract_vocab(path, "JP", args.autocorrect)
+            res = pipeline.extract_vocab(path, args.autocorrect)
+            print(res)
             all_vocab.extend(res)
         except Exception as e:
             print(f"Erreur lors de l'analyse de {img}: {e}")

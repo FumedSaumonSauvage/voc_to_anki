@@ -1,4 +1,4 @@
-mistralai
 python-dotenv
 pandas
 genanki
+google-genai

@@ -15,9 +15,9 @@ class VocPipeline:
         with open(image_path, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode('utf-8')
 
-    def extract_vocab(self, image_path, language="JP", autocorrect=False):
+    def extract_vocab(self, image_path, autocorrect=False):
         base64_image = self.encode_image(image_path)
-        system_prompt = get_full_prompt(autocorrect=autocorrect, language=language) 
+        system_prompt = get_full_prompt(autocorrect=autocorrect) 
 
         response = self.loader.client.chat.complete(
             model=self.loader.model_name,

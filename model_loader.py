@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from mistralai.client import Mistral
+from google import genai
 
 load_dotenv()
 
@@ -10,7 +10,6 @@ class ModelLoader:
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(ModelLoader, cls).__new__(cls)
-            api_key = os.getenv("MISTRAL_API_KEY")
-            cls._instance.model_name = os.getenv("MISTRAL_MODEL", "mistral-large-latest")
-            cls._instance.client = Mistral(api_key=api_key)
+            cls._instance.client = genai.Client()
+            cls._instance.model_name = os.getenv("GEMINI_MODEL", "gemini-3-flash-preview")
         return cls._instance
