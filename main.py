@@ -9,6 +9,7 @@ def main():
     parser.add_argument("--in_dir", required=True, help="Dossier contenant les images")
     parser.add_argument("--out", default="deck.apkg", help="Chemin de sortie")
     parser.add_argument("--autocorrect", action="store_true", default=False)
+    parser.add_argument("--deckid", default=0, help="ID de deck")
 
     args = parser.parse_args()
 
@@ -35,8 +36,7 @@ def main():
         except Exception as e:
             print(f"Erreur lors de l'analyse de {img}: {e}")
 
-
-    pipeline.save_to_apkg(all_vocab, args.out)
+    pipeline.save_to_apkg(all_vocab, args.out, deck_id=args.deckid)
 
     print(f"\nFinito, {len(all_vocab)} mots extraits.")
     print(f"Fichier sauvegardé sous : {args.out}")
