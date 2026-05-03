@@ -47,7 +47,6 @@ python main.py --in_dir ./test_images --out deck.apkg --autocorrect
 ## Notes
 
 - Pour que ca aille plus vite, compresse tes images (`jpegoptim --size 800k *.jpg` sur linux)
-- L'ID de deck est généré aléatoirement donc on peut pas maj les decks
 - que du jpeg please
 
 
@@ -95,5 +94,4 @@ python main.py --in_dir ./test_images --out deck.apkg --autocorrect
 ## Notes
 
 - To make things faster, compress your images (`jpegoptim --size 800k *.jpg` on Linux).
-- The deck ID is generated randomly so you can’t reliably update decks.
 - JPEG only, please.
